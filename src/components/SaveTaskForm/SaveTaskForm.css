@@ -1,0 +1,23 @@
+form{
+    padding-left: 15px;;
+ }
+ 
+ form input{
+    margin-bottom: 10px;
+    display: block;
+}
+
+#add-text-div{
+    background-color: aliceblue;
+    width: 163px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 3px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#add-text-div *{
+    display: inline;
+}
+
