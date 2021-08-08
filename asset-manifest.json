@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/posdar-site/static/css/main.65963b15.chunk.css",
+    "main.css": "/posdar-site/static/css/main.41cdcca6.chunk.css",
     "main.js": "/posdar-site/static/js/main.4b7ffcb6.chunk.js",
     "main.js.map": "/posdar-site/static/js/main.4b7ffcb6.chunk.js.map",
     "runtime-main.js": "/posdar-site/static/js/runtime-main.ef2fff87.js",
@@ -10,13 +10,13 @@
     "static/js/3.b6559d93.chunk.js": "/posdar-site/static/js/3.b6559d93.chunk.js",
     "static/js/3.b6559d93.chunk.js.map": "/posdar-site/static/js/3.b6559d93.chunk.js.map",
     "index.html": "/posdar-site/index.html",
-    "static/css/main.65963b15.chunk.css.map": "/posdar-site/static/css/main.65963b15.chunk.css.map",
+    "static/css/main.41cdcca6.chunk.css.map": "/posdar-site/static/css/main.41cdcca6.chunk.css.map",
     "static/js/2.948356fa.chunk.js.LICENSE.txt": "/posdar-site/static/js/2.948356fa.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.ef2fff87.js",
     "static/js/2.948356fa.chunk.js",
-    "static/css/main.65963b15.chunk.css",
+    "static/css/main.41cdcca6.chunk.css",
     "static/js/main.4b7ffcb6.chunk.js"
   ]
 }
