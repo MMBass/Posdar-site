@@ -1,11 +1,13 @@
-import { useState } from 'react';
-import {localhostInstance} from "../../axios";
+import { useState,useContext } from 'react';
+import {posdarUrlInstance} from "../../axios";
+import {BannerContext} from "../../BannerContext";
 import './SaveTaskForm.css';
 
 function SaveTaskForm() {
     const [formData, setFormData] = useState([]);
     const [wordsList, setWordsList] = useState([]);
     const [inputList, setInputList] = useState([""]);
+    const {message, setMessage} = useContext(BannerContext);
 
     const addInput = () => {
         setInputList([...inputList, ""]);
@@ -24,14 +26,15 @@ function SaveTaskForm() {
 
     const saveTask = async (e) => {
         e.preventDefault();
-        const response = await localhostInstance.post('/register', formData).catch((err) => {
+        const response = await posdarUrlInstance.post('/register', formData).catch((err) => {
             console.log(err)
-            // setAlert("Something went wrong");
+            setMessage(["#ff5e5e","Something went wrong"]);
         });
-
-        if (response) {
-            // setAlert(response.data);
-            // "Task Added sucsseccfully"// TODO add message to server response;
+        
+        if(response){
+            if (response.status === 200) {
+                setMessage(["#e48ff1","Task Added sucsseccfully"]);
+            }
         }
     }
 
@@ -61,9 +64,7 @@ function SaveTaskForm() {
             })}
 
             <br></br>
-            <br></br>
-            <br></br>
-            <button type="submit">Save</button>
+            <button type="submit" id="submitButton">Save</button>
         </form>
 
     );

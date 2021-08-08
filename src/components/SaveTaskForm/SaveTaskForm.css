@@ -1,5 +1,6 @@
 form{
-    padding-left: 15px;;
+    padding-left: 15px;
+    padding-bottom: 15px;
  }
  
  form input{
@@ -21,3 +22,16 @@ form{
     display: inline;
 }
 
+#submitButton{
+    cursor: pointer;
+    padding: 8px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-left: 120px;
+}
+
+#submitButton:hover{
+    background-color: #883997;
+    color: white;
+    border: 1px solid white;
+}
