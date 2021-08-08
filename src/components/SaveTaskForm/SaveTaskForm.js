@@ -33,7 +33,9 @@ function SaveTaskForm() {
         
         if(response){
             if (response.status === 200) {
-                setMessage(["#e48ff1","Task Added sucsseccfully"]);
+                setMessage(["#e48ff1",response.data.message]);
+            }else{
+                setMessage(["darkgray",response.data.message]);
             }
         }
     }
@@ -57,6 +59,7 @@ function SaveTaskForm() {
                 <p> add another text </p>
                 <button type="button" onClick={addInput}>+</button>
             </div>
+            <p id="must">*must contain only letters or numbers</p>
             {inputList.map((x, i) => {
                 return (
                     <input name={"text" + (i + 1)} placeholder={"Text " + (i + 1)} key={i} onChange={e => handleWordsList(e, i)}></input>
