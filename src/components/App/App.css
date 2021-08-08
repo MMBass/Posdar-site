@@ -8,6 +8,10 @@
   color: white;
 }
 
+h1{
+  margin: 20px 0px 10px 0px;
+}
+
 input{
   border: 1px solid #676767;
   border-radius: 3px;
