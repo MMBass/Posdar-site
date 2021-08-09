@@ -3,29 +3,30 @@ import {posdarUrlInstance} from "../../axios";
 import {BannerContext} from "../../BannerContext";
 import './GetTasksForm.css';
 
-function GetTasksForm() {
+function GetTasksForm(props) {
     const [formData, setFormData] = useState([]);
+    const [formEnd, setFormEnd] = useState(false);
     const {message, setMessage} = useContext(BannerContext);
-    //todo use here the "tasks" context
-
+    
     const handleInputs = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     }
 
     const getTasks = async (e) => {
         e.preventDefault();
-        const response = await posdarUrlInstance.post('/register', formData).catch((err) => {
+        const response = await posdarUrlInstance.post('/list', formData).catch((err) => {
             console.log(err)
             setMessage(["#ff5e5e","Something went wrong"]);
         });
         
         if(response){
-            if (response.status === 200) {
-                setMessage(["#e48ff1",response.data.message]);
-            }else{
-                setMessage(["darkgray",response.data.message]);
-            }
+           props.setFatherTasks(response.data.tasks);
+           setFormEnd(true);
         }
+    }
+
+    if(formEnd){
+        return null;
     }
 
     return (

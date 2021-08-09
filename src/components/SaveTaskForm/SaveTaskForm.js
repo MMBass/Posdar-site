@@ -42,7 +42,7 @@ function SaveTaskForm() {
 
     return (
         <form id="saveTasksForm" onSubmit={saveTask}>
-            <h3>Add task</h3>
+            <h2>Add task</h2>
             <input name="userName" placeholder="User name" onChange={handleInputs}></input>
 
             <input name="email" placeholder="Email" onChange={handleInputs}></input>
@@ -56,7 +56,7 @@ function SaveTaskForm() {
             <h4>Word/s to search:</h4>
 
             <div id="add-text-div">
-                <p> add another text </p>
+                <p> Add another text </p>
                 <button type="button" onClick={addInput}>+</button>
             </div>
             <p id="must">*must contain only letters or numbers</p>
