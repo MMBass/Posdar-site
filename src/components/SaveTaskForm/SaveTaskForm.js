@@ -41,7 +41,7 @@ function SaveTaskForm() {
     }
 
     return (
-        <form onSubmit={saveTask}>
+        <form id="saveTasksForm" onSubmit={saveTask}>
             <h3>Add task</h3>
             <input name="userName" placeholder="User name" onChange={handleInputs}></input>
 

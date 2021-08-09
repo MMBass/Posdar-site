@@ -1,15 +1,12 @@
 .App {
   background-color: #E1E2E1;
   color: #676767;
+  justify-content: center;
 }
 
 .header {
   font-size: calc(10px + 1vmin);
   color: white;
-}
-
-h1{
-  margin: 20px 0px 10px 0px;
 }
 
 input{

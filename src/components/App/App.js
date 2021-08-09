@@ -4,6 +4,7 @@ import './App.css';
 import Header from "../Header/Header";
 import Banner from "../Banner/Banner";
 import SaveTaskForm from "../SaveTaskForm/SaveTaskForm";
+import TasksList from "../TasksList/TasksList";
 import Footer from "../Footer/Footer";
 import {BannerContext} from "../../BannerContext";
 
@@ -34,6 +35,7 @@ function App() {
         <Header></Header>
         <Banner></Banner>
         <SaveTaskForm></SaveTaskForm>
+        <TasksList></TasksList>
         <Footer></Footer>
       </div>
     </BannerContext.Provider>
