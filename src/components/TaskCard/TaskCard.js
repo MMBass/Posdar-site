@@ -14,19 +14,20 @@ function TaskCard(props) {
                         return <p> {t}</p>
                     })}
                     <p>User: {props.user}</p>
-                    <small>Email:  {props.email}</small>
+                    <small>Email: {props.email}</small>
                     <small>Task-id: {props._id}</small>
-                    <button className="dlBtn">DELETE</button>
+                    <button className="dl-btn">DELETE</button>
                 </>
                 : <>
+                    <div className="emptyCard">
                     <p></p>
                     <p></p>
                     <p></p>
                     <small></small>
                     <small></small>
-                    <button className="dlBtn">DELETE</button>
+                    <button className="dis-btn" disabled>DELETE</button>
+                    </div>
                 </>
-
             }
         </div>
     );

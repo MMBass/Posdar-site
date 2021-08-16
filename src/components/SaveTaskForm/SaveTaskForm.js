@@ -26,7 +26,12 @@ function SaveTaskForm() {
 
     const saveTask = async (e) => {
         e.preventDefault();
-        const response = await posdarUrlInstance.post('/register', formData).catch((err) => {
+        const response = await posdarUrlInstance.post('/register',{
+            headers:{
+                "token":formData.token
+            }},
+            formData)
+            .catch((err) => {
             console.log(err)
             setMessage(["#ff5e5e","Something went wrong"]);
         });

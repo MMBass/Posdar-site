@@ -5,11 +5,11 @@ import {BannerContext} from "../../BannerContext";
 function Banner() {
   const {message, setMessage} = useContext(BannerContext);
   
-  // useEffect(()=>{
-  //   setTimeout(() => {
-  //     closeBanner();
-  //   }, 3000);
-  // });
+  useEffect(()=>{
+    setTimeout(() => {
+      closeBanner();
+    }, 3000);
+  });
 
   function closeBanner(){
     setMessage(["darkgray",""]);

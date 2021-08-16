@@ -14,7 +14,7 @@ function GetTasksForm(props) {
 
     const getTasks = async (e) => {
         e.preventDefault();
-        const response = await posdarUrlInstance.post('/list', formData).catch((err) => {
+        const response = await posdarUrlInstance.get('/register', {headers:formData}).catch((err) => {
             console.log(err)
             setMessage(["#ff5e5e","Something went wrong"]);
         });
