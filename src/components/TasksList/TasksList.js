@@ -20,7 +20,6 @@ function TasksList() {
         if (tasks[0]) {
             return (<div id="TasksList">
                 <h2>Your Saved Tasks</h2>
-                <GetTasksForm setFatherTasks={setTasks}></GetTasksForm>
                 {tasks.map((task) => (
                     <TaskCard
                         key={task._id}

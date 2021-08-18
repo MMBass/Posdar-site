@@ -1,13 +1,13 @@
-import { useState,useContext } from 'react';
-import {posdarUrlInstance} from "../../axios";
-import {BannerContext} from "../../BannerContext";
+import { useState, useContext } from 'react';
+import { posdarUrlInstance } from "../../axios";
+import { BannerContext } from "../../BannerContext";
 import './SaveTaskForm.css';
 
 function SaveTaskForm() {
     const [formData, setFormData] = useState([]);
     const [wordsList, setWordsList] = useState([]);
     const [inputList, setInputList] = useState([""]);
-    const {message, setMessage} = useContext(BannerContext);
+    const { message, setMessage } = useContext(BannerContext);
 
     const addInput = () => {
         setInputList([...inputList, ""]);
@@ -26,21 +26,21 @@ function SaveTaskForm() {
 
     const saveTask = async (e) => {
         e.preventDefault();
-        const response = await posdarUrlInstance.post('/register',{
-            headers:{
-                "token":formData.token
-            }},
-            formData)
+        const response = await posdarUrlInstance.post('/register', formData, {
+            headers: {
+                "token": formData.token
+            }
+        })
             .catch((err) => {
-            console.log(err)
-            setMessage(["#ff5e5e","Something went wrong"]);
-        });
-        
-        if(response){
+                console.log(err)
+                setMessage(["#ff5e5e", "Something went wrong"]);
+            });
+
+        if (response) {
             if (response.status === 200) {
-                setMessage(["#e48ff1",response.data.message]);
-            }else{
-                setMessage(["darkgray",response.data.message]);
+                setMessage(["#e48ff1", response.data.message]);
+            } else {
+                setMessage(["darkgray", response.data.message]);
             }
         }
     }
