@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/posdar-site/static/css/main.c19896ed.chunk.css",
-    "main.js": "/posdar-site/static/js/main.0cf1838e.chunk.js",
-    "main.js.map": "/posdar-site/static/js/main.0cf1838e.chunk.js.map",
+    "main.js": "/posdar-site/static/js/main.b6a5ef00.chunk.js",
+    "main.js.map": "/posdar-site/static/js/main.b6a5ef00.chunk.js.map",
     "runtime-main.js": "/posdar-site/static/js/runtime-main.00bb3f8a.js",
     "runtime-main.js.map": "/posdar-site/static/js/runtime-main.00bb3f8a.js.map",
     "static/js/2.49c59b93.chunk.js": "/posdar-site/static/js/2.49c59b93.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.00bb3f8a.js",
     "static/js/2.49c59b93.chunk.js",
     "static/css/main.c19896ed.chunk.css",
-    "static/js/main.0cf1838e.chunk.js"
+    "static/js/main.b6a5ef00.chunk.js"
   ]
 }
