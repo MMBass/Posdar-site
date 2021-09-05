@@ -52,7 +52,6 @@ function TaskCard(props) {
                         <p></p>
                         <small></small>
                         <small></small>
-                        <button className="dis-btn" disabled>DELETE</button>
                     </div>
                 </>
             }
