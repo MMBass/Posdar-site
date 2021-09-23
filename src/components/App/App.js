@@ -43,10 +43,10 @@ function App() {
       <Banner></Banner>
         <div className="App">
           <Switch>
-            <Route path="/add">
+            <Route exact path="/posdar-site">
               <SaveTaskForm></SaveTaskForm>
             </Route>
-            <Route path="/list">
+            <Route exact path="/posdar-site/list">
               <TasksList></TasksList>
             </Route>
           </Switch>
