@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/posdar-site/static/css/main.53bdff6f.chunk.css",
-    "main.js": "/posdar-site/static/js/main.a6a2d72b.chunk.js",
-    "main.js.map": "/posdar-site/static/js/main.a6a2d72b.chunk.js.map",
+    "main.js": "/posdar-site/static/js/main.137ff457.chunk.js",
+    "main.js.map": "/posdar-site/static/js/main.137ff457.chunk.js.map",
     "runtime-main.js": "/posdar-site/static/js/runtime-main.3e475711.js",
     "runtime-main.js.map": "/posdar-site/static/js/runtime-main.3e475711.js.map",
-    "static/js/2.df881355.chunk.js": "/posdar-site/static/js/2.df881355.chunk.js",
-    "static/js/2.df881355.chunk.js.map": "/posdar-site/static/js/2.df881355.chunk.js.map",
+    "static/js/2.7ad89e21.chunk.js": "/posdar-site/static/js/2.7ad89e21.chunk.js",
+    "static/js/2.7ad89e21.chunk.js.map": "/posdar-site/static/js/2.7ad89e21.chunk.js.map",
     "static/js/3.a6ec5991.chunk.js": "/posdar-site/static/js/3.a6ec5991.chunk.js",
     "static/js/3.a6ec5991.chunk.js.map": "/posdar-site/static/js/3.a6ec5991.chunk.js.map",
     "index.html": "/posdar-site/index.html",
     "static/css/main.53bdff6f.chunk.css.map": "/posdar-site/static/css/main.53bdff6f.chunk.css.map",
-    "static/js/2.df881355.chunk.js.LICENSE.txt": "/posdar-site/static/js/2.df881355.chunk.js.LICENSE.txt"
+    "static/js/2.7ad89e21.chunk.js.LICENSE.txt": "/posdar-site/static/js/2.7ad89e21.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.3e475711.js",
-    "static/js/2.df881355.chunk.js",
+    "static/js/2.7ad89e21.chunk.js",
     "static/css/main.53bdff6f.chunk.css",
-    "static/js/main.a6a2d72b.chunk.js"
+    "static/js/main.137ff457.chunk.js"
   ]
 }
