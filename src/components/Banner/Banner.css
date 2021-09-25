@@ -9,11 +9,9 @@
     background-color: darkgray;
     text-align: center;
     padding: 1px;
-}
 
-.b-scroll{
     position: fixed !important;
-    top: 0;
+    bottom: 0;
 }
 
 #Banner strong{

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
-import GetTasksForm from "../GetTasksForm/GetTasksForm";
-import TaskCard from '../TaskCard/TaskCard';
+import GetTasksForm from "../../components/GetTasksForm/GetTasksForm";
+import TaskCard from '../../components/TaskCard/TaskCard';
 import { BannerContext } from "../../BannerContext";
 import './TasksList.css';
 

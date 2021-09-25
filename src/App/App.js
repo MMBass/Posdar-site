@@ -1,19 +1,18 @@
 import { useState, useEffect, useContext } from 'react';
-import { posdarUrlInstance } from "../../axios";
+import { posdarUrlInstance } from "../axios";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 
 import './App.css';
-import Header from "../Header/Header";
-import Banner from "../Banner/Banner";
-import SaveTaskForm from "../SaveTaskForm/SaveTaskForm";
-import TasksList from "../TasksList/TasksList";
-import Footer from "../Footer/Footer";
-import { BannerContext } from "../../BannerContext";
+import Header from "../components/Header/Header";
+import Banner from "../components/Banner/Banner";
+import SaveTaskForm from "../pages/SaveTaskForm/SaveTaskForm";
+import TasksList from "../pages/TasksList/TasksList";
+import Footer from "../components/Footer/Footer";
+import { BannerContext } from "../BannerContext";
 
 function App() {
   const [message, setMessage] = useState(["darkgray", ""]);
@@ -40,17 +39,16 @@ function App() {
     <BannerContext.Provider value={{ message, setMessage }}>
       <Router>
       <Header></Header>
-      <Banner></Banner>
         <div className="App">
           <Switch>
-            <Route exact path="/posdar-site">
+            <Route exact path="/">
               <SaveTaskForm></SaveTaskForm>
             </Route>
-            <Route exact path="/posdar-site/list">
+            <Route exact path="/list">
               <TasksList></TasksList>
             </Route>
           </Switch>
-
+          <Banner></Banner>
           <Footer></Footer>
         </div>
       </Router>
