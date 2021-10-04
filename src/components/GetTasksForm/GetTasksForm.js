@@ -15,12 +15,15 @@ function GetTasksForm(props) {
     const getTasks = async (e) => {
         e.preventDefault();
         const response = await posdarUrlInstance.get('/register', {headers:formData}).catch((err) => {
-            console.log(err)
+            console.log(err);
             setMessage(["#ff5e5e","Something went wrong"]);
         });
         
         if(response){
            props.setFatherTasks(response.data.tasks);
+           if(response.accessToken){
+            window.localStorage.setItem("at",response.accessToken);
+           }
            setFormEnd(true);
         }
     }
@@ -34,7 +37,7 @@ function GetTasksForm(props) {
             <h4>*You must be connected to see the your tasks</h4>
             <input name="userName" placeholder="User name" onChange={handleInputs}></input>
 
-            <input name="token" placeholder="Api key" onChange={handleInputs}></input>
+            <input name="apiKey" placeholder="Api key" onChange={handleInputs}></input>
 
             <br></br>
             <button type="submit" id="getButton">Get</button>

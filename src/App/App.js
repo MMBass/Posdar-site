@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import { posdarUrlInstance } from "../axios";
 import {
   HashRouter as Router,
@@ -11,6 +11,7 @@ import Header from "../components/Header/Header";
 import Banner from "../components/Banner/Banner";
 import SaveTaskForm from "../pages/SaveTaskForm/SaveTaskForm";
 import TasksList from "../pages/TasksList/TasksList";
+import NoMatch from "../pages/NoMatch/NoMatch";
 import Footer from "../components/Footer/Footer";
 import { BannerContext } from "../BannerContext";
 
@@ -38,7 +39,7 @@ function App() {
   return (
     <BannerContext.Provider value={{ message, setMessage }}>
       <Router>
-      <Header></Header>
+        <Header></Header>
         <div className="App">
           <Switch>
             <Route exact path="/">
@@ -46,6 +47,9 @@ function App() {
             </Route>
             <Route exact path="/list">
               <TasksList></TasksList>
+            </Route>
+            <Route path="*">
+              <NoMatch />
             </Route>
           </Switch>
           <Banner></Banner>

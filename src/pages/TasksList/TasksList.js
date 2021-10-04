@@ -1,14 +1,29 @@
 import React, { useEffect, useState, useContext } from 'react';
+import { posdarUrlInstance } from "../../axios";
 import GetTasksForm from "../../components/GetTasksForm/GetTasksForm";
 import TaskCard from '../../components/TaskCard/TaskCard';
-import { BannerContext } from "../../BannerContext";
+import {BannerContext} from "../../BannerContext";
 import './TasksList.css';
 
 function TasksList() {
     const [tasks, setTasks] = useState([]);
-    const { message, setMessage } = useContext(BannerContext);
+    const {message, setMessage} = useContext(BannerContext);
 
-    const ifTasksEmpty = () => {
+    useEffect(async () => {
+        let at = window.localStorage.getItem("at");
+        if (at.length > 1) {
+            const response = await posdarUrlInstance.get('/register', { headers: {"at":at} }).catch((err) => {
+                console.log(err);
+                setMessage(["#ff5e5e", "Something went wrong"]);
+            });
+
+            if (response.data.tasks) {
+                setTasks(response.data.tasks);
+            }
+        }
+    });
+
+    const ifTasks = () => {
         if (!tasks[0]) {
             return (
                 <div id="TasksList">
@@ -24,7 +39,6 @@ function TasksList() {
                     <TaskCard
                         key={task._id}
                         _id={task._id}
-                        user={task.user}
                         date={task.date}
                         group={task.group}
                         email={task.email}
@@ -35,7 +49,7 @@ function TasksList() {
         }
     }
 
-    return (ifTasksEmpty());
+    return (ifTasks());
 };
 
 export default TasksList;

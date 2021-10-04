@@ -28,7 +28,7 @@ function SaveTaskForm() {
         e.preventDefault();
         const response = await posdarUrlInstance.post('/register', formData, {
             headers: {
-                "token": formData.token
+                "apiKey": formData.apiKey
             }
         })
             .catch((err) => {
@@ -48,17 +48,17 @@ function SaveTaskForm() {
     return (
         <form id="saveTasksForm" onSubmit={saveTask}>
             <h2>Add task</h2>
-            <input name="userName" placeholder="User name" onChange={handleInputs}></input>
+            <input name="userName" placeholder="User name" onChange={handleInputs} required></input>
 
-            <input name="email" placeholder="Email" onChange={handleInputs}></input>
+            <input name="group" placeholder="Group ID" onChange={handleInputs} required></input>
 
-            <input name="group" placeholder="Group ID" onChange={handleInputs}></input>
+            <input name="apiKey" placeholder="Api key" onChange={handleInputs} required></input>
 
-            <input name="token" placeholder="Api key" onChange={handleInputs}></input>
+            <input name="email" placeholder="Email" onChange={handleInputs} required></input>
 
             <input name="time" placeholder="Time between requests" onChange={handleInputs} disabled></input>
 
-            <h4>Word/s to search:</h4>
+            <h4>What to look for?</h4>
 
             <div id="add-text-div">
                 <p> Add another text </p>

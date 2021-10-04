@@ -8,22 +8,26 @@ function TaskCard(props) {
     const { message, setMessage } = useContext(BannerContext);
 
     const delTask = async () => {
-        const response = await posdarUrlInstance.delete('/register',
-            {
-                headers: {
-                    "t_id": props._id,
-                    // "token":"token"
-                }
-            }).catch((err) => {
-                setMessage(["#ff5e5e", "Something went wrong"]);
-            });
+        let at = window.localStorage.getItem("at");
+        if (at.length > 1) {
+            const response = await posdarUrlInstance.delete('/register',
+                {
+                    headers: {
+                        "t_id": props._id,
+                        "at": at
+                    }
+                }).catch((err) => {
+                    setMessage(["#ff5e5e", "Something went wrong"]);
+                });
 
-        if (response) {
-            if (response.status == 200) {
-                setMessage(["#ff5e5e", "Deleted"]);
-                setTaskEnd(true);
+            if (response) {
+                if (response.status == 200) {
+                    setMessage(["#ff5e5e", "Deleted"]);
+                    setTaskEnd(true);
+                }
             }
         }
+
     }
 
     if (taskEnd === true) {
@@ -38,9 +42,8 @@ function TaskCard(props) {
                     <p>Group: {props.group}</p>
                     <p>Text:</p>
                     {props.text.map(t => {
-                        return <p>{t}</p>
+                        return <small className="txt">{t}</small>
                     })}
-                    <p>User: {props.user}</p>
                     <small>Email: {props.email}</small>
                     <small>Task-id: {props._id}</small>
                     <button className="dl-btn" onClick={() => delTask()}>DELETE</button>
