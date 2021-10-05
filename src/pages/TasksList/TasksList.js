@@ -11,7 +11,7 @@ function TasksList() {
 
     useEffect(async () => {
         let at = window.localStorage.getItem("at");
-        if (at.length > 1) {
+        if (at) {
             const response = await posdarUrlInstance.get('/register', { headers: {"at":at} }).catch((err) => {
                 console.log(err);
                 setMessage(["#ff5e5e", "Something went wrong"]);

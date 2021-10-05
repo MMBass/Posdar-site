@@ -9,7 +9,7 @@ function TaskCard(props) {
 
     const delTask = async () => {
         let at = window.localStorage.getItem("at");
-        if (at.length > 1) {
+        if (at) {
             const response = await posdarUrlInstance.delete('/register',
                 {
                     headers: {
@@ -27,7 +27,7 @@ function TaskCard(props) {
                 }
             }
         }
-
+        if (!at) console.log("ls item missing. please login again");
     }
 
     if (taskEnd === true) {

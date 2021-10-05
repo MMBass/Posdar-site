@@ -28,7 +28,8 @@ function SaveTaskForm() {
         e.preventDefault();
         const response = await posdarUrlInstance.post('/register', formData, {
             headers: {
-                "apiKey": formData.apiKey
+                "apiKey": formData.apiKey,
+                "userName": formData.userName
             }
         })
             .catch((err) => {
