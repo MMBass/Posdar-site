@@ -21,8 +21,8 @@ function GetTasksForm(props) {
         
         if(response){
            props.setFatherTasks(response.data.tasks);
-           if(response.accessToken){
-            window.localStorage.setItem("at",response.accessToken);
+           if(response.headers["access-token"]){
+            window.localStorage.setItem("at",response.headers["access-token"]);
            }
            setFormEnd(true);
         }
@@ -35,9 +35,9 @@ function GetTasksForm(props) {
     return (
         <form id="getTasksForm" onSubmit={getTasks}>
             <h4>*You must be connected to see the your tasks</h4>
-            <input name="userName" placeholder="User name" onChange={handleInputs}></input>
+            <input name="user-name" placeholder="User name" onChange={handleInputs}></input>
 
-            <input name="apiKey" placeholder="Api key" onChange={handleInputs}></input>
+            <input name="x-api-key" placeholder="Api key" onChange={handleInputs}></input>
 
             <br></br>
             <button type="submit" id="getButton">Get</button>

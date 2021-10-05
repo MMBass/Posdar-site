@@ -12,16 +12,16 @@ function TasksList() {
     useEffect(async () => {
         let at = window.localStorage.getItem("at");
         if (at) {
-            const response = await posdarUrlInstance.get('/register', { headers: {"at":at} }).catch((err) => {
+            const response = await posdarUrlInstance.get('/register', { headers: {"x-access-token":at} }).catch((err) => {
                 console.log(err);
                 setMessage(["#ff5e5e", "Something went wrong"]);
             });
 
-            if (response.data.tasks) {
+            if (response.data) {
                 setTasks(response.data.tasks);
             }
         }
-    });
+    },[]);
 
     const ifTasks = () => {
         if (!tasks[0]) {

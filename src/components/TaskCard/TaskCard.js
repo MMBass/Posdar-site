@@ -13,8 +13,8 @@ function TaskCard(props) {
             const response = await posdarUrlInstance.delete('/register',
                 {
                     headers: {
-                        "t_id": props._id,
-                        "at": at
+                        "t-id": props._id,
+                        "x-access-token": at
                     }
                 }).catch((err) => {
                     setMessage(["#ff5e5e", "Something went wrong"]);
