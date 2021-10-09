@@ -5,19 +5,20 @@ import TaskCard from '../../components/TaskCard/TaskCard';
 import {BannerContext} from "../../BannerContext";
 import './TasksList.css';
 
-function TasksList() {
+function TasksList(props) {
     const [tasks, setTasks] = useState([]);
     const {message, setMessage} = useContext(BannerContext);
 
     useEffect(async () => {
         let at = window.localStorage.getItem("at");
         if (at) {
+            setTasks([" "]);
             const response = await posdarUrlInstance.get('/register', { headers: {"x-access-token":at} }).catch((err) => {
                 console.log(err);
                 setMessage(["#ff5e5e", "Something went wrong"]);
             });
 
-            if (response.data) {
+            if (response) {
                 setTasks(response.data.tasks);
             }
         }
@@ -28,7 +29,7 @@ function TasksList() {
             return (
                 <div id="TasksList">
                     <h2>Your Saved Tasks</h2>
-                    <GetTasksForm setFatherTasks={setTasks}></GetTasksForm>
+                    <GetTasksForm setFatherTasks={setTasks}></GetTasksForm> 
                     <TaskCard></TaskCard>
                 </div>)
         }
@@ -43,6 +44,7 @@ function TasksList() {
                         group={task.group}
                         email={task.email}
                         text={task.text}
+                        onOpenModal={props.onOpenModal}
                     ></TaskCard>
                 ))}
             </div>)

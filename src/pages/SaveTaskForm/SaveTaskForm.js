@@ -1,12 +1,15 @@
 import { useState, useContext } from 'react';
 import { posdarUrlInstance } from "../../axios";
 import { BannerContext } from "../../BannerContext";
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import './SaveTaskForm.css';
 
 function SaveTaskForm() {
     const [formData, setFormData] = useState([]);
     const [wordsList, setWordsList] = useState([]);
     const [inputList, setInputList] = useState([""]);
+    const [loaderOpen, setLoaderOpen] = useState(false);
     const { message, setMessage } = useContext(BannerContext);
 
     const addInput = () => {
@@ -26,6 +29,7 @@ function SaveTaskForm() {
 
     const saveTask = async (e) => {
         e.preventDefault();
+        setLoaderOpen(true);
         const response = await posdarUrlInstance.post('/register', formData, {
             headers: {
                 "x-api-key": formData.apiKey,
@@ -44,6 +48,7 @@ function SaveTaskForm() {
                 setMessage(["darkgray", response.data.message]);
             }
         }
+        setLoaderOpen(false);
     }
 
     return (
@@ -65,7 +70,7 @@ function SaveTaskForm() {
                 <p> Add another text </p>
                 <button type="button" onClick={addInput}>+</button>
             </div>
-            <p id="must">*must contain only letters or numbers</p>
+            <p id="must">* accepts letters or numbers</p>
             {inputList.map((x, i) => {
                 return (
                     <input name={"text" + (i + 1)} placeholder={"Text " + (i + 1)} key={i} onChange={e => handleWordsList(e, i)}></input>
@@ -73,7 +78,18 @@ function SaveTaskForm() {
             })}
 
             <br></br>
-            <button type="submit" id="submitButton">Save</button>
+            <button type="submit" id="submitButton"> 
+                     <Loader 
+                        visible={loaderOpen}
+                        type="TailSpin"
+                        color="#000000"
+                        height={20}
+                        width={20}
+                        timeout={3000}
+                        style={{display: "inline", marginRight: "12px"}}
+                     />  
+                     Save
+            </button>
         </form>
 
     );

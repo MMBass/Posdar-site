@@ -5,6 +5,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import Modal from 'react-modal';
 
 import './App.css';
 import Header from "../components/Header/Header";
@@ -15,9 +16,26 @@ import NoMatch from "../pages/NoMatch/NoMatch";
 import Footer from "../components/Footer/Footer";
 import { BannerContext } from "../BannerContext";
 
+Modal.setAppElement('#root');
+
+const modalStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    width: '250px',
+    height: '200px',
+    textAlign: "center",
+  },
+};
+
 function App() {
   const [message, setMessage] = useState(["darkgray", ""]);
   const [first, setFirst] = useState(true);
+  const [modalIsOpen, setIsOpen] = useState(false);
 
   function init() {
     posdarUrlInstance.get('/').then((res) => {
@@ -34,7 +52,20 @@ function App() {
 
   useEffect(() => {
     if (first === true) init();
-  });
+  }, []);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    console.log("after open")
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
 
   return (
     <BannerContext.Provider value={{ message, setMessage }}>
@@ -46,13 +77,24 @@ function App() {
               <SaveTaskForm></SaveTaskForm>
             </Route>
             <Route exact path="/list">
-              <TasksList></TasksList>
+              <TasksList onOpenModal={openModal}></TasksList>
             </Route>
             <Route path="*">
               <NoMatch />
             </Route>
           </Switch>
           <Banner></Banner>
+          <Modal
+            isOpen={modalIsOpen}
+            onAfterOpen={afterOpenModal}
+            onRequestClose={closeModal}
+            style={modalStyles}
+            contentLabel="Example Modal"
+          >
+            <h2>Are You Sure?</h2>
+            <button onClick={closeModal}>Cancel</button>
+            <button onClick={closeModal}>Yes</button>
+          </Modal>
           <Footer></Footer>
         </div>
       </Router>

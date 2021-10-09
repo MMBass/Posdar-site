@@ -1,11 +1,14 @@
 import { useState,useContext } from 'react';
 import {posdarUrlInstance} from "../../axios";
 import {BannerContext} from "../../BannerContext";
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import './GetTasksForm.css';
 
 function GetTasksForm(props) {
     const [formData, setFormData] = useState([]);
     const [formEnd, setFormEnd] = useState(false);
+    const [loaderOpen, setLoaderOpen] = useState(false);
     const {message, setMessage} = useContext(BannerContext);
     
     const handleInputs = (e) => {
@@ -13,6 +16,7 @@ function GetTasksForm(props) {
     }
 
     const getTasks = async (e) => {
+        setLoaderOpen(true);
         e.preventDefault();
         const response = await posdarUrlInstance.get('/register', {headers:formData}).catch((err) => {
             console.log(err);
@@ -26,6 +30,7 @@ function GetTasksForm(props) {
            }
            setFormEnd(true);
         }
+        setLoaderOpen(false);
     }
 
     if(formEnd){
@@ -40,7 +45,18 @@ function GetTasksForm(props) {
             <input name="x-api-key" placeholder="Api key" onChange={handleInputs}></input>
 
             <br></br>
-            <button type="submit" id="getButton">Get</button>
+            <button type="submit" id="getButton">
+                <Loader 
+                    visible={loaderOpen}
+                    type="TailSpin"
+                    color="#000000"
+                    height={20}
+                    width={20}
+                    timeout={3000}
+                    style={{display: "inline", marginRight: "12px"}}
+                    />
+                    Get
+            </button>
         </form>
 
     );

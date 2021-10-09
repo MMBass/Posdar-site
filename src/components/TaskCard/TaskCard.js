@@ -1,14 +1,18 @@
 import React, { useState, useContext } from 'react';
 import { posdarUrlInstance } from "../../axios";
 import { BannerContext } from "../../BannerContext";
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import './TaskCard.css';
 
 function TaskCard(props) {
     const [taskEnd, setTaskEnd] = useState(false);
+    const [loaderOpen, setLoaderOpen] = useState(false);
     const { message, setMessage } = useContext(BannerContext);
 
     const delTask = async () => {
         let at = window.localStorage.getItem("at");
+        setLoaderOpen(true);
         if (at) {
             const response = await posdarUrlInstance.delete('/register',
                 {
@@ -28,6 +32,7 @@ function TaskCard(props) {
             }
         }
         if (!at) console.log("ls item missing. please login again");
+        setLoaderOpen(true);
     }
 
     if (taskEnd === true) {
@@ -46,7 +51,16 @@ function TaskCard(props) {
                     })}
                     <small>Email: {props.email}</small>
                     <small>Task-id: {props._id}</small>
-                    <button className="dl-btn" onClick={() => delTask()}>DELETE</button>
+                    <button className="dl-btn" onClick={() => delTask()}>
+                        <Loader 
+                        visible={loaderOpen}
+                        type="TailSpin"
+                        color="#000000"
+                        height={20}
+                        width={20}
+                        timeout={3000}
+                        style={{display: "inline", marginRight: "12px"}}
+                        />  DELETE</button>
                 </>
                 : <>
                     <div className="emptyCard">
