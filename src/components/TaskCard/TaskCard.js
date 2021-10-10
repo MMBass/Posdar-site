@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { posdarUrlInstance } from "../../axios";
 import { BannerContext } from "../../BannerContext";
+import { ModalContext } from "../../ModalContext";
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import './TaskCard.css';
@@ -9,30 +10,34 @@ function TaskCard(props) {
     const [taskEnd, setTaskEnd] = useState(false);
     const [loaderOpen, setLoaderOpen] = useState(false);
     const { message, setMessage } = useContext(BannerContext);
+    const { modal, setModal } = useContext(ModalContext);
 
     const delTask = async () => {
-        let at = window.localStorage.getItem("at");
-        setLoaderOpen(true);
-        if (at) {
-            const response = await posdarUrlInstance.delete('/register',
-                {
-                    headers: {
-                        "t-id": props._id,
-                        "x-access-token": at
+        props.setOpenModal(true);
+        if(modal){
+            let at = window.localStorage.getItem("at");
+            if (at) {
+                    setLoaderOpen(true);
+                    const response = await posdarUrlInstance.delete('/register',
+                        {
+                            headers: {
+                                "t-id": props._id,
+                                "x-access-token": at
+                            }
+                        }).catch((err) => {
+                            setMessage(["#ff5e5e", "Something went wrong"]);
+                        });
+        
+                    if (response) {
+                        if (response.status == 200) {
+                            setMessage(["#ff5e5e", "Deleted"]);
+                            setTaskEnd(true);
+                        }
                     }
-                }).catch((err) => {
-                    setMessage(["#ff5e5e", "Something went wrong"]);
-                });
-
-            if (response) {
-                if (response.status == 200) {
-                    setMessage(["#ff5e5e", "Deleted"]);
-                    setTaskEnd(true);
-                }
             }
+            if (!at) console.log("ls item missing. please login again");
+            setLoaderOpen(true);
         }
-        if (!at) console.log("ls item missing. please login again");
-        setLoaderOpen(true);
     }
 
     if (taskEnd === true) {

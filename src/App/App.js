@@ -15,6 +15,7 @@ import TasksList from "../pages/TasksList/TasksList";
 import NoMatch from "../pages/NoMatch/NoMatch";
 import Footer from "../components/Footer/Footer";
 import { BannerContext } from "../BannerContext";
+import { ModalContext } from "../ModalContext";
 
 Modal.setAppElement('#root');
 
@@ -34,8 +35,8 @@ const modalStyles = {
 
 function App() {
   const [message, setMessage] = useState(["darkgray", ""]);
+  const [modal, setModal] = useState(false);
   const [first, setFirst] = useState(true);
-  const [modalIsOpen, setIsOpen] = useState(false);
 
   function init() {
     posdarUrlInstance.get('/').then((res) => {
@@ -54,21 +55,9 @@ function App() {
     if (first === true) init();
   }, []);
 
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    console.log("after open")
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
   return (
     <BannerContext.Provider value={{ message, setMessage }}>
+    <ModalContext.Provider value={{ modal, setModal }}>
       <Router>
         <Header></Header>
         <div className="App">
@@ -77,27 +66,17 @@ function App() {
               <SaveTaskForm></SaveTaskForm>
             </Route>
             <Route exact path="/list">
-              <TasksList onOpenModal={openModal}></TasksList>
+              <TasksList></TasksList>
             </Route>
             <Route path="*">
               <NoMatch />
             </Route>
           </Switch>
           <Banner></Banner>
-          <Modal
-            isOpen={modalIsOpen}
-            onAfterOpen={afterOpenModal}
-            onRequestClose={closeModal}
-            style={modalStyles}
-            contentLabel="Example Modal"
-          >
-            <h2>Are You Sure?</h2>
-            <button onClick={closeModal}>Cancel</button>
-            <button onClick={closeModal}>Yes</button>
-          </Modal>
           <Footer></Footer>
         </div>
       </Router>
+    </ModalContext.Provider>
     </BannerContext.Provider>
   );
 }

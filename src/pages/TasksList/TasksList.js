@@ -2,11 +2,13 @@ import React, { useEffect, useState, useContext } from 'react';
 import { posdarUrlInstance } from "../../axios";
 import GetTasksForm from "../../components/GetTasksForm/GetTasksForm";
 import TaskCard from '../../components/TaskCard/TaskCard';
+import Modal from '../../components/Modal/Modal';
 import {BannerContext} from "../../BannerContext";
 import './TasksList.css';
 
 function TasksList(props) {
     const [tasks, setTasks] = useState([]);
+    const [modalOpen, setModalOpen] = useState(false);
     const {message, setMessage} = useContext(BannerContext);
 
     useEffect(async () => {
@@ -46,9 +48,10 @@ function TasksList(props) {
                         group={task.group}
                         email={task.email}
                         text={task.text}
-                        onOpenModal={props.onOpenModal}
+                        setOpenModal={setModalOpen}
                     ></TaskCard>
                 ))}
+                { modalOpen && <Modal setOpenModal={setModalOpen} title={"Are You Sure?"}/>}
             </div>)
         }
     }
