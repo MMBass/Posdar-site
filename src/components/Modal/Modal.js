@@ -1,12 +1,13 @@
-import React, { useContext } from 'react';
+import React, {useContext} from 'react';
 import "./Modal.css";
-import { ModalContext } from "../../ModalContext";
+import { LoaderContext } from "../../context/LoaderContext";
+
 
 function Modal(props) {
-    const { modal, setModal } = useContext(ModalContext);
-    
+    const { LoaderC, setLoaderC } = useContext(LoaderContext);
+
     const conModal = () =>{
-        setModal(true);
+        props.delEnd();
         props.setOpenModal(false);
     }
     
@@ -17,6 +18,7 @@ function Modal(props) {
                     <button
                         onClick={() => {
                             props.setOpenModal(false);
+                            setLoaderC(false);
                         }}
                     >
                         X
@@ -29,6 +31,7 @@ function Modal(props) {
                     <button
                         onClick={() => {
                             props.setOpenModal(false);
+                            setLoaderC(false);
                         }}
                         id="cancelBtn"
                     >

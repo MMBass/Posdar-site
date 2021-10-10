@@ -1,47 +1,19 @@
-import React, { useState, useContext } from 'react';
-import { posdarUrlInstance } from "../../axios";
-import { BannerContext } from "../../BannerContext";
-import { ModalContext } from "../../ModalContext";
+import React, { useContext } from 'react';
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import './TaskCard.css';
+import { LoaderContext } from "../../context/LoaderContext";
 
 function TaskCard(props) {
-    const [taskEnd, setTaskEnd] = useState(false);
-    const [loaderOpen, setLoaderOpen] = useState(false);
-    const { message, setMessage } = useContext(BannerContext);
-    const { modal, setModal } = useContext(ModalContext);
+    const { LoaderC, setLoaderC } = useContext(LoaderContext);
 
-    const delTask = async () => {
-        props.setOpenModal(true);
-        if(modal){
+    const delTask = () => {
             let at = window.localStorage.getItem("at");
             if (at) {
-                    setLoaderOpen(true);
-                    const response = await posdarUrlInstance.delete('/register',
-                        {
-                            headers: {
-                                "t-id": props._id,
-                                "x-access-token": at
-                            }
-                        }).catch((err) => {
-                            setMessage(["#ff5e5e", "Something went wrong"]);
-                        });
-        
-                    if (response) {
-                        if (response.status == 200) {
-                            setMessage(["#ff5e5e", "Deleted"]);
-                            setTaskEnd(true);
-                        }
-                    }
-            }
-            if (!at) console.log("ls item missing. please login again");
-            setLoaderOpen(true);
-        }
-    }
-
-    if (taskEnd === true) {
-        return null;
+                setLoaderC(true);
+                props.delTask(props._id);
+            }       
+            if (!at) console.error("ls item missing. please login again");
     }
 
     return (
@@ -58,7 +30,7 @@ function TaskCard(props) {
                     <small>Task-id: {props._id}</small>
                     <button className="dl-btn" onClick={() => delTask()}>
                         <Loader 
-                        visible={loaderOpen}
+                        visible={LoaderC}
                         type="TailSpin"
                         color="#000000"
                         height={20}

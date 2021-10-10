@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './Banner.css';
-import { BannerContext } from "../../BannerContext";
+import { BannerContext } from "../../context/BannerContext";
 
 function Banner() {
   const { message, setMessage } = useContext(BannerContext);

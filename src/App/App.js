@@ -5,7 +5,6 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import Modal from 'react-modal';
 
 import './App.css';
 import Header from "../components/Header/Header";
@@ -14,10 +13,8 @@ import SaveTaskForm from "../pages/SaveTaskForm/SaveTaskForm";
 import TasksList from "../pages/TasksList/TasksList";
 import NoMatch from "../pages/NoMatch/NoMatch";
 import Footer from "../components/Footer/Footer";
-import { BannerContext } from "../BannerContext";
-import { ModalContext } from "../ModalContext";
-
-Modal.setAppElement('#root');
+import { BannerContext } from "../context/BannerContext";
+import { LoaderContext } from "../context/LoaderContext";
 
 const modalStyles = {
   content: {
@@ -35,7 +32,7 @@ const modalStyles = {
 
 function App() {
   const [message, setMessage] = useState(["darkgray", ""]);
-  const [modal, setModal] = useState(false);
+  const [LoaderC, setLoaderC ] = useState(false);
   const [first, setFirst] = useState(true);
 
   function init() {
@@ -57,7 +54,7 @@ function App() {
 
   return (
     <BannerContext.Provider value={{ message, setMessage }}>
-    <ModalContext.Provider value={{ modal, setModal }}>
+    <LoaderContext.Provider value={{ LoaderC, setLoaderC }}>
       <Router>
         <Header></Header>
         <div className="App">
@@ -76,8 +73,9 @@ function App() {
           <Footer></Footer>
         </div>
       </Router>
-    </ModalContext.Provider>
+    </LoaderContext.Provider>
     </BannerContext.Provider>
+    
   );
 }
 
