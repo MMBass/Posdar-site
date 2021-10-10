@@ -15,7 +15,9 @@ function TasksList(props) {
             setTasks([" "]);
             const response = await posdarUrlInstance.get('/register', { headers: {"x-access-token":at} }).catch((err) => {
                 console.log(err);
+                setTasks([]);
                 setMessage(["#ff5e5e", "Something went wrong"]);
+                window.localStorage.removeItem("at");
             });
 
             if (response) {

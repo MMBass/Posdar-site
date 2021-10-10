@@ -35,13 +35,12 @@ function SaveTaskForm() {
                 "x-api-key": formData.apiKey,
                 "user-name": formData.userName
             }
-        })
-            .catch((err) => {
-                console.log(err)
-                setMessage(["#ff5e5e", "Something went wrong"]);
-            });
+        }).catch((err) => {
+            setMessage(["#ff5e5e", "Something went wrong"]);
+        });
 
         if (response) {
+            handleReset();
             if (response.status === 200) {
                 setMessage(["#e48ff1", response.data.message]);
             } else {
@@ -50,6 +49,13 @@ function SaveTaskForm() {
         }
         setLoaderOpen(false);
     }
+
+    const handleReset = () => {
+        Array.from(document.querySelectorAll("#saveTasksForm input")).forEach(
+          input => (input.value = "")
+        );
+        setFormData([]);
+      };
 
     return (
         <form id="saveTasksForm" onSubmit={saveTask}>
