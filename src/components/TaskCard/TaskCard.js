@@ -10,7 +10,7 @@ function TaskCard(props) {
     const delTask = () => {
             let at = window.localStorage.getItem("at");
             if (at) {
-                setLoaderC(true);
+                setLoaderC(props._id);
                 props.delTask(props._id);
             }       
             if (!at) console.error("ls item missing. please login again");
@@ -21,25 +21,26 @@ function TaskCard(props) {
 
             {props.group
                 ? <>
-                    <p>Group: {props.group}</p>
-                    <p>Text:</p>
+                    <p><u>Group:</u>   {props.group}</p>
+                    <p><u>Text:</u></p>
                     {props.text.map(t => {
                         return <small className="txt">{t}</small>
                     })}
-                    <small>Email: {props.email}</small>
-                    <small>Task-id: {props._id}</small>
-                    <button className="dl-btn" onClick={() => delTask()}>
+                    <small><u>Email:</u>   {props.email}</small>
+                    <small><u>Task-id:</u>   {props._id}</small>
+                    <button className="dl-btn" onClick={() => delTask()} >
                         <Loader 
-                        visible={LoaderC}
+                        visible={LoaderC == props._id}
                         type="TailSpin"
-                        color="#000000"
+                        color="#fff"
                         height={20}
                         width={20}
                         timeout={3000}
                         style={{display: "inline", marginRight: "12px"}}
-                        />  DELETE</button>
+                        /> DELETE </button>
                 </>
-                : <>
+                : 
+                <>
                     <div className="emptyCard">
                         <p></p>
                         <p></p>

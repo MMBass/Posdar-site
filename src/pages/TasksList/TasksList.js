@@ -16,6 +16,7 @@ function TasksList(props) {
     const { LoaderC, setLoaderC } = useContext(LoaderContext);
 
     useEffect(async () => {
+        setDeleted(false);
         let at = window.localStorage.getItem("at");
         if (at) {
             setTasks([" "]);
@@ -47,6 +48,7 @@ function TasksList(props) {
                 }
             }).catch((err) => {
                 setMessage(["#ff5e5e", "Something went wrong"]);
+                setLoaderC(false);
             });
 
         if (response) {

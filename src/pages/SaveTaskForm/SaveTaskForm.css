@@ -67,6 +67,7 @@
     border: 1px solid black;
     border-radius: 10px;
     margin-left: 120px;
+    margin-left: 80%;
 }
 
 #submitButton:hover{
@@ -90,4 +91,8 @@
     #saveTasksForm{
         width: 90%;
      }
+
+    #submitButton{
+        margin-left: 60%;
+    }
   }

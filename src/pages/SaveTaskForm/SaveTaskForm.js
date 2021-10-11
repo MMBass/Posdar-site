@@ -10,6 +10,7 @@ function SaveTaskForm() {
     const [wordsList, setWordsList] = useState([]);
     const [inputList, setInputList] = useState([""]);
     const [loaderOpen, setLoaderOpen] = useState(false);
+    const [ disab, setDisab ] = useState(false);
     const { message, setMessage } = useContext(BannerContext);
 
     const addInput = () => {
@@ -29,6 +30,7 @@ function SaveTaskForm() {
 
     const saveTask = async (e) => {
         e.preventDefault();
+        setDisab(true);
         setLoaderOpen(true);
         const response = await posdarUrlInstance.post('/register', formData, {
             headers: {
@@ -42,12 +44,13 @@ function SaveTaskForm() {
         if (response) {
             handleReset();
             if (response.status === 200) {
-                setMessage(["#e48ff1", response.data.message]);
+                setMessage(["#883997", response.data.message]);
             } else {
                 setMessage(["darkgray", response.data.message]);
             }
         }
         setLoaderOpen(false);
+        setDisab(false);
     }
 
     const handleReset = () => {
@@ -84,7 +87,7 @@ function SaveTaskForm() {
             })}
 
             <br></br>
-            <button type="submit" id="submitButton"> 
+            <button type="submit" id="submitButton" disabled={disab}> 
                      <Loader 
                         visible={loaderOpen}
                         type="TailSpin"
