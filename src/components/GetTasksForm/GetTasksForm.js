@@ -19,8 +19,8 @@ function GetTasksForm(props) {
         setLoaderOpen(true);
         e.preventDefault();
         const response = await posdarUrlInstance.get('/register', {headers:formData}).catch((err) => {
-            console.log(err);
-            setMessage(["#ff5e5e","Something went wrong"]);
+            setMessage(["#ff5e5e",err.message || "Something went wrong"]);
+            setLoaderOpen(false);
         });
         
         if(response){
@@ -29,6 +29,7 @@ function GetTasksForm(props) {
             window.localStorage.setItem("at",response.headers["access-token"]);
            }
            setFormEnd(true);
+           setLoaderOpen(false);
         }
         setLoaderOpen(false);
     }
@@ -54,7 +55,7 @@ function GetTasksForm(props) {
                     width={20}
                     timeout={3000}
                     style={{display: "inline", marginRight: "12px"}}
-                    />
+                />
                     Get
             </button>
         </form>

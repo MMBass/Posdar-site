@@ -7,23 +7,27 @@ import './SaveTaskForm.css';
 
 function SaveTaskForm() {
     const [formData, setFormData] = useState([]);
-    const [wordsList, setWordsList] = useState([]);
-    const [inputList, setInputList] = useState([""]);
+    const [wordsList, setWordsList] = useState([' ']);
     const [loaderOpen, setLoaderOpen] = useState(false);
-    const [ disab, setDisab ] = useState(false);
+    const [disab, setDisab] = useState(false);
     const { message, setMessage } = useContext(BannerContext);
 
     const addInput = () => {
-        setInputList([...inputList, ""]);
+        setWordsList([...wordsList, " "]);
     };
 
     const handleInputs = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     }
 
-    const handleWordsList = (e, i) => {
+    const handleWordsList = (del, e, i) => {
         const newList = wordsList;
-        newList[i] = e.target.value;
+        if(del){
+            newList.splice(i,1);
+        }else{
+            newList[i] = e.target.value;
+        }
+        
         setWordsList(newList);
         setFormData({ ...formData, text: wordsList });
     }
@@ -55,10 +59,11 @@ function SaveTaskForm() {
 
     const handleReset = () => {
         Array.from(document.querySelectorAll("#saveTasksForm input")).forEach(
-          input => (input.value = "")
+            input => (input.value = "")
         );
+        setWordsList([' ']);
         setFormData([]);
-      };
+    };
 
     return (
         <form id="saveTasksForm" onSubmit={saveTask}>
@@ -80,24 +85,28 @@ function SaveTaskForm() {
                 <button type="button" onClick={addInput}>+</button>
             </div>
             <p id="must">* accepts letters or numbers</p>
-            {inputList.map((x, i) => {
+            {wordsList.map((x, i) => {
                 return (
-                    <input name={"text" + (i + 1)} placeholder={"Text " + (i + 1)} key={i} onChange={e => handleWordsList(e, i)}></input>
+                    <div className="txt-inputs">
+                        <input className="inp-txt" id={"text" + (i + 1)} name={"text" + (i + 1)} onChange={e => handleWordsList(null, e, i)}  value={x}>
+                        </input>
+                        {i>0 &&<input type="button" className="inp-remove" value="-" onClick={e => handleWordsList(true, e, i)}></input>}
+                    </div>
                 );
             })}
 
             <br></br>
-            <button type="submit" id="submitButton" disabled={disab}> 
-                     <Loader 
-                        visible={loaderOpen}
-                        type="TailSpin"
-                        color="#000000"
-                        height={20}
-                        width={20}
-                        timeout={3000}
-                        style={{display: "inline", marginRight: "12px"}}
-                     />  
-                     Save
+            <button type="submit" id="submitButton" disabled={disab}>
+                <Loader
+                    visible={loaderOpen}
+                    type="TailSpin"
+                    color="#000000"
+                    height={20}
+                    width={20}
+                    timeout={3000}
+                    style={{ display: "inline", marginRight: "12px" }}
+                />
+                Save
             </button>
         </form>
 
