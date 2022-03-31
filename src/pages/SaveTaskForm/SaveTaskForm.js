@@ -78,13 +78,13 @@ function SaveTaskForm() {
 
             <input name="time" placeholder="Time between requests" onChange={handleInputs} disabled></input>
 
-            <h4>What to look for?</h4>
+            <h4 className='txt-headers'>What to look for?</h4>
+            <p id="must" className='txt-headers'>* accepts letters or numbers</p>
 
             <div id="add-text-div">
                 <p> Add another text </p>
                 <button type="button" onClick={addInput}>+</button>
             </div>
-            <p id="must">* accepts letters or numbers</p>
             {wordsList.map((x, i) => {
                 return (
                     <div className="txt-inputs">

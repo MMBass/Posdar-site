@@ -1,16 +1,22 @@
 #saveTasksForm{
     background-color: #fff;
     color: #424242;
-    width: 50%;
-    box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
-    text-align: center;
+    width: 95%;
+    /* box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%); */
+    /* text-align: center; */
     margin: auto;
-    border-radius: 16px;
+    /* border-radius: 16px; */
     margin-top: 0px;
     margin-bottom: 77px;
     padding-bottom: 15px;
+    padding-left: 20px;
     min-width: 200px;
     overflow: hidden;
+}
+
+h4{
+    margin-top: 55px;
+    margin-bottom: 0;
 }
 
 
@@ -19,15 +25,17 @@
     position: relative;
     background-color: rgb(146, 146, 146);
     color: #fff;
-    width: 100%;
+    width: 110%;
     margin: 0;
+    margin-left: -20px;
     height: 45;
     padding: 10px;
 }
 
 form input{
-    width: 90%;
-    margin: auto;
+    /* width: 90%;
+    margin: auto; */
+    width: 200px;
     margin-top: 20px;
     display: block;
 }
@@ -38,11 +46,11 @@ form input{
     display: block;
 }
 
-.txt-inputs .inp-txt{
+/* .txt-inputs .inp-txt{
     width: 90%;
     margin: auto;
     margin-top: 20px;
-}
+} */
 
 #saveTasksForm .inp-remove{
     background-color: rgb(245, 130, 130);
@@ -59,7 +67,7 @@ form input{
 
 
 #add-text-div{
-    margin-left: 20px;
+    /* margin-left: 20px; */
     background-color: aliceblue;
     width: 163px;
     border: 1px solid gray;
@@ -91,8 +99,8 @@ form input{
     padding: 8px;
     border: 1px solid black;
     border-radius: 10px;
-    margin-left: 120px;
-    margin-left: 80%;
+    margin-left: 165px;
+    /* margin-left: 80%; */
 }
 
 #submitButton:hover{
@@ -104,7 +112,7 @@ form input{
 #must{
     font-size: 11px;
     font-weight: 600;
-    letter-spacing: -0.6px;
+    letter-spacing: -0.5px;
 }
 
 #loader{
@@ -112,12 +120,31 @@ form input{
 }
 
 @media only screen and (max-width: 768px) {
+    #saveTasksForm h2{
+                margin-left: unset;
+    }
+
     /* For mobile phones: */
     #saveTasksForm{
         width: 90%;
+        padding-left: unset;
      }
 
     #submitButton{
-        margin-left: 60%;
+        margin-left: 80%;
+    }
+
+    form input, #saveTasksForm .txt-inputs{
+        width: 90%;
+        margin: auto;
+        margin-top: 20px;
+    }
+
+    #saveTasksForm .txt-inputs{
+        margin-top: unset;
+    }
+
+    .txt-headers, #add-text-div{
+        margin-left: 12px;
     }
   }
