@@ -9,7 +9,7 @@ function GetTasksForm(props) {
     const [formData, setFormData] = useState([]);
     const [formEnd, setFormEnd] = useState(false);
     const [loaderOpen, setLoaderOpen] = useState(false);
-    const { message, setMessage } = useContext(BannerContext);
+    const { setMessage } = useContext(BannerContext);
 
     const handleInputs = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });

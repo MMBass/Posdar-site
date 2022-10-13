@@ -12,33 +12,35 @@ function TasksList(props) {
     const [modalOpen, setModalOpen] = useState(false);
     const [del_id, setDel_id] = useState('');
     const [deleted, setDeleted] = useState(false);
-    const { message, setMessage } = useContext(BannerContext);
-    const { LoaderC, setLoaderC } = useContext(LoaderContext);
+    const { setMessage } = useContext(BannerContext);
+    const { setLoaderC } = useContext(LoaderContext);
 
-    useEffect(async () => {
+    useEffect(() => {
         setDeleted(false);
         let at = window.localStorage.getItem("at");
         if (at) {
-            setTasks([" "]);
-            const response = await posdarUrlInstance.get('/register', { headers: { "x-access-token": at } }).catch((err) => {
-                console.log(err);
-                setTasks([]);
-                setMessage(["#ff5e5e", "Something went wrong"]);
-                window.localStorage.removeItem("at");
-            });
+            (async () => {
+                setTasks([" "]);
+                const response = await posdarUrlInstance.get('/register', { headers: { "x-access-token": at } }).catch((err) => {
+                    console.log(err);
+                    setTasks([]);
+                    setMessage(["#ff5e5e", "Something went wrong"]);
+                    window.localStorage.removeItem("at");
+                });
 
-            if (response) {
-                setTasks(response.data.tasks);
-            }
+                if (response) {
+                    setTasks(response.data.tasks);
+                }
+            })();
         }
-    }, [deleted]);
+    }, [deleted]); // eslint-disable-line react-hooks/exhaustive-deps
 
     const delStart = async (_id) => {
-       setModalOpen(true);
-       setDel_id(_id);
+        setModalOpen(true);
+        setDel_id(_id);
     }
 
-    const delEnd = async ()=>{
+    const delEnd = async () => {
         let at = window.localStorage.getItem("at");
         const response = await posdarUrlInstance.delete('/register',
             {

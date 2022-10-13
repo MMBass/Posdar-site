@@ -16,20 +16,6 @@ import Footer from "../components/Footer/Footer";
 import { BannerContext } from "../context/BannerContext";
 import { LoaderContext } from "../context/LoaderContext";
 
-const modalStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    width: '250px',
-    height: '200px',
-    textAlign: "center",
-  },
-};
-
 function App() {
   const [message, setMessage] = useState(["darkgray", ""]);
   const [LoaderC, setLoaderC ] = useState(false);
@@ -50,7 +36,7 @@ function App() {
 
   useEffect(() => {
     if (first === true) init();
-  }, []);
+  }, );
 
   return (
     <BannerContext.Provider value={{ message, setMessage }}>
