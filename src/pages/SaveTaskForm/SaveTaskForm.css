@@ -1,59 +1,62 @@
-#saveTasksForm{
-    background-color: #fff;
-    color: #424242;
+#saveTasksForm {
+    background-color: #EBECF0;
+    color: #1E3252;
     width: 95%;
-    /* box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%); */
-    /* text-align: center; */
+    box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
     margin: auto;
-    /* border-radius: 16px; */
+    border: 0px solid white;
+    border-radius: 5px;
     margin-top: 0px;
-    margin-bottom: 77px;
     padding-bottom: 15px;
     padding-left: 20px;
     min-width: 200px;
     overflow: hidden;
 }
 
-h4{
+h4 {
     margin-top: 55px;
     margin-bottom: 0;
+    font-weight: 200;
 }
 
 
-#saveTasksForm h2{
+#saveTasksForm h2 {
+    font-size: 20px;
+    font-weight: 200;
     text-align: left;
     position: relative;
-    background-color: rgb(146, 146, 146);
-    color: #fff;
+    color: #1E3252;
     width: 110%;
     margin: 0;
     margin-left: -20px;
     height: 45;
-    padding: 10px;
+    padding: 25px;
 }
 
-form input{
-    /* width: 90%;
-    margin: auto; */
+.form-inner{
+    background-color: #FFFFFF;
+}
+
+form input {
     width: 200px;
     margin-top: 20px;
     display: block;
+    border: 0px;
+    box-shadow: 0 3px 3px -2px rgb(124, 124, 124);
+}
+
+form input:focus {
+    outline: none;
 }
 
 
-#saveTasksForm .txt-inputs{
+#saveTasksForm .txt-inputs {
     width: 100%;
     display: block;
 }
 
-/* .txt-inputs .inp-txt{
-    width: 90%;
-    margin: auto;
-    margin-top: 20px;
-} */
-
-#saveTasksForm .inp-remove{
-    background-color: rgb(245, 130, 130);
+#saveTasksForm .inp-remove {
+    background-color: rgb(247, 179, 179);
     margin: auto;
     margin-left: -20px;
     width: 20px;
@@ -61,90 +64,89 @@ form input{
     text-align: center;
 }
 
-.txt-inputs input{
+.txt-inputs input {
     display: inline;
+    outline: none;
 }
 
-
-#add-text-div{
-    /* margin-left: 20px; */
-    background-color: aliceblue;
-    width: 163px;
-    border: 1px solid gray;
-    border-radius: 10px;;
-    padding: 5px 7px 7px;
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-#add-text-div *{
-    display: inline;
-}
-
-#add-text-div button{
-    display: inline;
-    border: 1px solid black;
-    border-radius: 5px;
-}
-
-
-#add-text-div button:hover{
-    background-color: #c758dd;
-    color: white;
-    border: 1px solid white;
-}
-
-#submitButton{
+#add-text-btn {
     cursor: pointer;
-    padding: 8px;
-    border: 1px solid black;
-    border-radius: 10px;
-    margin-left: 165px;
-    /* margin-left: 80%; */
+    width: 160px;
+    text-align: left;
+    color: #7A8598;
+    font-size: 14px;
+    padding: 5px 7px 7px;
+    margin-bottom: 10px;
+    display: inline;
+    border: 0px solid black;
+    border-radius: 5px;
+    color: #7A8598;
+    background-color: #ebecf000;
 }
 
-#submitButton:hover{
-    background-color: #883997;
+#add-text-btn * {
+    display: inline;
+}
+
+
+#add-text-btn button:hover {
     color: white;
     border: 1px solid white;
 }
 
-#must{
-    font-size: 11px;
-    font-weight: 600;
+#submitButton {
+    cursor: pointer;
+    background-color: #fff;
+    color: #000000;
+    padding: 9px 13px;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin-left: 165px;
+}
+
+#submitButton:hover {
+    border: 1px solid black;
+}
+
+#must {
+    font-size: 13px;
+    font-weight: 400;
     letter-spacing: -0.5px;
 }
 
-#loader{
+#loader {
     display: inline;
 }
 
 @media only screen and (max-width: 768px) {
-    #saveTasksForm h2{
-                margin-left: unset;
+    #saveTasksForm h2 {
+        margin-left: unset;
+        padding: 15px;
     }
 
     /* For mobile phones: */
-    #saveTasksForm{
+    #saveTasksForm {
         width: 90%;
         padding-left: unset;
-     }
+    }
 
-    #submitButton{
+    #submitButton {
         margin-left: 80%;
     }
 
-    form input, #saveTasksForm .txt-inputs{
+    form input,
+    #saveTasksForm .txt-inputs {
         width: 90%;
         margin: auto;
         margin-top: 20px;
     }
 
-    #saveTasksForm .txt-inputs{
+    #saveTasksForm .txt-inputs {
         margin-top: unset;
     }
 
-    .txt-headers, #add-text-div{
+    .txt-headers,
+    #add-text-btn {
         margin-left: 12px;
     }
-  }
+}

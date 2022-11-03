@@ -3,19 +3,22 @@
     position: absolute;
     margin: 0;
     color: #000;
-    font-weight: 500;
+    font-weight: 200;
     font-size: 18px;
     width: 100%;
-    background-color: darkgray;
+    background-color: #D6D8D9;
     text-align: center;
     padding: 1px;
-
+    border: 0.5px solid #C6C8CA;
+    border-radius: 8px;
     position: fixed !important;
     bottom: 0;
 }
 
 #Banner strong{
     cursor: pointer;
+    font-size: 18px;
+    margin-top: 5px;
     margin-right: 10px;
     float: right;
 }

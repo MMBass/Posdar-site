@@ -4,6 +4,7 @@ import { BannerContext } from "../../context/BannerContext";
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import './SaveTaskForm.css';
+import { IoIosSave } from 'react-icons/io';
 
 function SaveTaskForm() {
     const [formData, setFormData] = useState([]);
@@ -22,12 +23,12 @@ function SaveTaskForm() {
 
     const handleWordsList = (del, e, i) => {
         const newList = wordsList;
-        if(del){
-            newList.splice(i,1);
-        }else{
+        if (del) {
+            newList.splice(i, 1);
+        } else {
             newList[i] = e.target.value;
         }
-        
+
         setWordsList(newList);
         setFormData({ ...formData, text: wordsList });
     }
@@ -42,13 +43,13 @@ function SaveTaskForm() {
                 "user-name": formData.userName
             }
         }).catch((err) => {
-            setMessage(["#ff5e5e", "Something went wrong"]);
+            setMessage(["#F8D7DA", "Something went wrong"]);
         });
 
         if (response) {
             handleReset();
             if (response.status === 200) {
-                setMessage(["#883997", response.data.message]);
+                setMessage(["#172B4D", response.data.message]);
             } else {
                 setMessage(["darkgray", response.data.message]);
             }
@@ -68,6 +69,7 @@ function SaveTaskForm() {
     return (
         <form id="saveTasksForm" onSubmit={saveTask}>
             <h2>Add task</h2>
+
             <input name="userName" placeholder="User name" onChange={handleInputs} required></input>
 
             <input name="group" placeholder="Group ID" onChange={handleInputs} required></input>
@@ -81,19 +83,20 @@ function SaveTaskForm() {
             <h4 className='txt-headers'>What to look for?</h4>
             <p id="must" className='txt-headers'>* accepts letters or numbers</p>
 
-            <div id="add-text-div">
-                <p> Add another text </p>
-                <button type="button" onClick={addInput}>+</button>
-            </div>
             {wordsList.map((x, i) => {
                 return (
                     <div className="txt-inputs">
-                        <input className="inp-txt" id={"text" + (i + 1)} name={"text" + (i + 1)} onChange={e => handleWordsList(null, e, i)}  value={x}>
+                        <input className="inp-txt" id={"text" + (i + 1)} name={"text" + (i + 1)} onChange={e => handleWordsList(null, e, i)} value={x}>
                         </input>
-                        {i>0 &&<input type="button" className="inp-remove" value="-" onClick={e => handleWordsList(true, e, i)}></input>}
+                        {i > 0 && <input type="button" className="inp-remove" value="-" onClick={e => handleWordsList(true, e, i)}></input>}
                     </div>
                 );
             })}
+
+            <br></br>
+            <button id="add-text-btn" type="button" onClick={addInput}>
+                <pre>+  Add another text </pre>
+            </button>
 
             <br></br>
             <button type="submit" id="submitButton" disabled={disab}>
@@ -106,7 +109,7 @@ function SaveTaskForm() {
                     timeout={3000}
                     style={{ display: "inline", marginRight: "12px" }}
                 />
-                Save
+                <IoIosSave />
             </button>
         </form>
 

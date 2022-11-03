@@ -13,8 +13,8 @@
   .modalContainer {
     width: 40%;
     height: 40%;
-    border-radius: 10px;
-    background-color: white;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.954);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     display: flex;
     flex-direction: column;
@@ -56,15 +56,15 @@
     height: 30px;
     margin: 10px;
     border: none;
-    background-color: rgb(54, 104, 196);
+    background-color: #546580;
     color: white;
-    border-radius: 8px;
+    border-radius: 5px;
     font-size: 15px;
     cursor: pointer;
   }
   
   #cancelBtn {
-    background-color: rgb(185, 38, 67);
+    background-color: rgb(239, 77, 110);
   }
 
   @media only screen and (max-width: 768px){

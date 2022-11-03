@@ -19,7 +19,7 @@ function GetTasksForm(props) {
         setLoaderOpen(true);
         e.preventDefault();
         const response = await posdarUrlInstance.get('/register', { headers: formData }).catch((err) => {
-            setMessage(["#ff5e5e", err.message || "Something went wrong"]);
+            setMessage(["#F8D7DA", err.message || "Something went wrong"]);
             setLoaderOpen(false);
         });
 
@@ -41,9 +41,9 @@ function GetTasksForm(props) {
     return (
         <form id="getTasksForm" onSubmit={getTasks}>
             <h4>*You must be connected to see your tasks</h4>
-            <input name="user-name" placeholder="User name" onChange={handleInputs}></input>
+            <input name="user-name" placeholder="User name" onChange={handleInputs} required></input>
 
-            <input name="x-api-key" placeholder="Api key" onChange={handleInputs}></input>
+            <input name="x-api-key" placeholder="Api key" onChange={handleInputs} required></input>
 
             <br></br>
             <button type="submit" id="getButton">

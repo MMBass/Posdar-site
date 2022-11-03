@@ -1,12 +1,14 @@
 .header{
-    background-color: #ba68c8;
-    margin-top: 18px;
+    background-color: #172B4D;
     font-size: calc(10px + 1vmin);
     color: white;
-    min-height: 67px ;
+    min-height: 30px;
+    margin-bottom: 50px;
 }
 
 h1{
-    margin: 20px 0 0;
+    font-size: 16px;
+    font-weight: 200;
     padding: 15px;
+    margin: 0;
 }

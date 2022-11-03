@@ -3,6 +3,7 @@ import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import './TaskCard.css';
 import { LoaderContext } from "../../context/LoaderContext";
+import { RiDeleteBin5Fill } from 'react-icons/ri';
 
 function TaskCard(props) {
     const { LoaderC, setLoaderC } = useContext(LoaderContext);
@@ -21,32 +22,36 @@ function TaskCard(props) {
 
             {props.group
                 ? <>
-                    <p><u>Group:</u>   {props.group}</p>
-                    <p><u>Text:</u></p>
+                    <p>Group:</p>
+                    <small>   {props.group}</small>
+                    <p>Text:</p>
                     {props.text.map(t => {
                         return <small className="txt">{t}</small>
                     })}
-                    <small><u>Email:</u>   {props.email}</small>
-                    <small><u>Task-id:</u>   {props._id}</small>
+                    <p>Email:</p> 
+                    <small>  {props.email}</small>
+                    <p>Task-id:</p>
+                    <small>   {props._id}</small>
                     <button className="dl-btn" onClick={() => delTask()} >
                         <Loader 
-                        visible={LoaderC == props._id}
+                        visible={LoaderC === props._id}
                         type="TailSpin"
-                        color="#fff"
+                        color="#000"
                         height={20}
                         width={20}
                         timeout={3000}
                         style={{display: "inline", marginRight: "12px"}}
-                        /> DELETE </button>
+                        /> <RiDeleteBin5Fill></RiDeleteBin5Fill> </button>
                 </>
                 : 
                 <>
                     <div className="emptyCard">
-                        <p></p>
-                        <p></p>
-                        <p></p>
                         <small></small>
                         <small></small>
+                        <small></small>
+                        <small></small>
+                        <small></small>
+                      
                     </div>
                 </>
             }

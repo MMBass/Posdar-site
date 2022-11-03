@@ -7,8 +7,8 @@ function Nav() {
 
     return (
         <nav id="Nav">
-            <Link to="/" className="links">Add Task</Link>
-            <Link to="/list" className="links">Tasks List</Link>
+                <Link to="/" className="links">Add Task</Link>
+                <Link to="/list" className="links">Tasks List</Link>
         </nav>
     );
 }

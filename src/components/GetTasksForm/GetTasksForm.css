@@ -1,10 +1,10 @@
 #getTasksForm{
-    background-color: rgb(255, 163, 163);
+    background-color: #FFF3CD;
     color: #424242;
     width: 90%;
     box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
     margin: auto;
-    border: 1px solid rgb(255, 77, 77);
+    border: 2px solid #FFEEBA;
     border-radius: 16px;
     padding-left: 20px;
     padding-bottom: 10px;
@@ -20,15 +20,16 @@
 
 #getButton{
     cursor: pointer;
-    padding: 8px;
-    border: 1px solid black;
-    border-radius: 10px;
+    padding: 9px 13px;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin-left: 75%;
+    
+    box-shadow: 0 1px 2px 0px rgb(124, 124, 124);
 }
 
 #getButton:hover{
-    background-color: #747474;
-    color: white;
-    border: 1px solid white;
+    border: 1px solid black;
 }
 
 

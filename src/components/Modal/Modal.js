@@ -4,7 +4,7 @@ import { LoaderContext } from "../../context/LoaderContext";
 
 
 function Modal(props) {
-    const { LoaderC, setLoaderC } = useContext(LoaderContext);
+    const { setLoaderC } = useContext(LoaderContext);
 
     const conModal = () =>{
         props.delEnd();
@@ -21,7 +21,7 @@ function Modal(props) {
                             setLoaderC(false);
                         }}
                     >
-                        X
+                       
                     </button>
                 </div>
                 <div className="modalTitle">

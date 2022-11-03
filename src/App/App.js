@@ -18,50 +18,51 @@ import { LoaderContext } from "../context/LoaderContext";
 
 function App() {
   const [message, setMessage] = useState(["darkgray", ""]);
-  const [LoaderC, setLoaderC ] = useState(false);
+  const [LoaderC, setLoaderC] = useState(false);
   const [first, setFirst] = useState(true);
 
   function init() {
     posdarUrlInstance.get('/').then((res) => {
       if (res.status === 200) {
-        setMessage(["darkgray", "server is on"]);
+        setMessage(["D6D8D9", "server is on"]);
         setFirst(false);
       }
     }).catch((err) => {
       console.log(err)
-      setMessage(["#ff5e5e", "server error"]);
+      setMessage(["#F8D7DA", "server error"]);
+      setFirst(false);
     });
 
   }
 
   useEffect(() => {
     if (first === true) init();
-  }, );
+  },);
 
   return (
     <BannerContext.Provider value={{ message, setMessage }}>
-    <LoaderContext.Provider value={{ LoaderC, setLoaderC }}>
-      <Router>
-        <Header></Header>
-        <div className="App">
-          <Switch>
-            <Route exact path="/">
-              <SaveTaskForm></SaveTaskForm>
-            </Route>
-            <Route exact path="/list">
-              <TasksList></TasksList>
-            </Route>
-            <Route path="*">
-              <NoMatch />
-            </Route>
-          </Switch>
-          <Banner></Banner>
-          <Footer></Footer>
-        </div>
-      </Router>
-    </LoaderContext.Provider>
+      <LoaderContext.Provider value={{ LoaderC, setLoaderC }}>
+        <Router>
+          <div className="App">
+            <Header></Header>
+            <Switch>
+              <Route exact path="/">
+                <SaveTaskForm></SaveTaskForm>
+              </Route>
+              <Route exact path="/list">
+                <TasksList></TasksList>
+              </Route>
+              <Route path="*">
+                <NoMatch />
+              </Route>
+            </Switch>
+            <Banner></Banner>
+            {/* <Footer></Footer> */}
+          </div>
+        </Router>
+      </LoaderContext.Provider>
     </BannerContext.Provider>
-    
+
   );
 }
 
